@@ -36,14 +36,13 @@ class FacilityController extends Controller
     }
 
     // Menampilkan form untuk mengedit fasilitas
-    public function edit(Facility $fasilitas)
+    public function edit(Facility $fasilita) // <-- DIUBAH
     {
-        // Ganti nama variabel agar konsisten
-        return view('admin.fasilitas.edit', ['facility' => $fasilitas]);
+        return view('admin.fasilitas.edit', ['facility' => $fasilita]); // <-- DIUBAH
     }
 
     // Memperbarui data fasilitas di database
-    public function update(Request $request, Facility $fasilitas)
+    public function update(Request $request, Facility $fasilita) // <-- DIUBAH
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -51,17 +50,15 @@ class FacilityController extends Controller
             'address' => 'required|string',
         ]);
 
-         // Ganti nama variabel agar konsisten
-        $fasilitas->update($request->all());
+        $fasilita->update($request->all()); // <-- DIUBAH
 
         return redirect()->route('admin.fasilitas.index')->with('success', 'Data fasilitas berhasil diperbarui.');
     }
 
     // Menghapus data fasilitas dari database
-    public function destroy(Facility $fasilitas)
+    public function destroy(Facility $fasilita) // <-- DIUBAH
     {
-         // Ganti nama variabel agar konsisten
-        $fasilitas->delete();
+        $fasilita->delete(); // <-- DIUBAH
         return redirect()->route('admin.fasilitas.index')->with('success', 'Data fasilitas berhasil dihapus.');
     }
 }
