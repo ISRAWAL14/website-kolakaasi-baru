@@ -65,6 +65,31 @@
                             </div>
                         </div>
 
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mt-6 mb-2">
+                            Data Kependudukan
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <x-input-label for="population_total" :value="__('Total Penduduk')" />
+                                <x-text-input id="population_total" class="block mt-1 w-full" type="number" name="population_total" :value="old('population_total', $profile->population_total ?? 0)" required />
+                                <x-input-error :messages="$errors->get('population_total')" class="mt-2" />
+                            </div>
+                            <div>
+                                <x-input-label for="household_count" :value="__('Jumlah Kepala Keluarga (KK)')" />
+                                <x-text-input id="household_count" class="block mt-1 w-full" type="number" name="household_count" :value="old('household_count', $profile->household_count ?? 0)" required />
+                                <x-input-error :messages="$errors->get('household_count')" class="mt-2" />
+                            </div>
+                            <div>
+                                <x-input-label for="population_male" :value="__('Jumlah Penduduk Laki-laki')" />
+                                <x-text-input id="population_male" class="block mt-1 w-full" type="number" name="population_male" :value="old('population_male', $profile->population_male ?? 0)" required />
+                                <x-input-error :messages="$errors->get('population_male')" class="mt-2" />
+                            </div>
+                            <div>
+                                <x-input-label for="population_female" :value="__('Jumlah Penduduk Perempuan')" />
+                                <x-text-input id="population_female" class="block mt-1 w-full" type="number" name="population_female" :value="old('population_female', $profile->population_female ?? 0)" required />
+                                <x-input-error :messages="$errors->get('population_female')" class="mt-2" />
+                            </div>
+                        </div>
                         <div class="flex items-center justify-end mt-6">
                             <x-primary-button>
                                 {{ __('Simpan Perubahan') }}

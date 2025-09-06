@@ -35,6 +35,9 @@
                         <x-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
                             {{ __('Kelola Kontak') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.layanan.index')" :active="request()->routeIs('admin.layanan.*')">
+                            {{ __('Kelola Layanan') }}
+                        </x-nav-link>
                     @endif
                     </div>
             </div>
@@ -109,6 +112,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
                     {{ __('Kelola Kontak') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.layanan.index')" :active="request()->routeIs('admin.layanan.*')">
+                    {{ __('Kelola Layanan') }}
                 </x-responsive-nav-link>
             @endif
             </div>

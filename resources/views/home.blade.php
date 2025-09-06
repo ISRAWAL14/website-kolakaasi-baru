@@ -3,7 +3,6 @@
 @section('title', 'Beranda - Kelurahan Kolakaasi')
 
 @section('content')
-    <!-- Hero Section -->
     <section id="hero" class="relative h-[60vh] bg-cover bg-center flex items-center justify-center text-white" style="background-image: url('https://source.unsplash.com/random/1920x1080/?village,indonesia');">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative z-10 text-center px-4">
@@ -12,7 +11,6 @@
         </div>
     </section>
 
-    <!-- Profil Singkat & Batas Wilayah -->
     <section id="profil" class="py-16 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -47,7 +45,33 @@
         </div>
     </section>
 
-    <!-- Fasilitas Umum -->
+    @if($profile)
+    <section id="kependudukan" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-teal-700">Data Kependudukan</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-4xl font-bold text-teal-600">{{ number_format($profile->population_total ?? 0) }}</h3>
+                    <p class="mt-2 text-md font-medium text-gray-500">Total Penduduk</p>
+                </div>
+                <div class="text-center bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-4xl font-bold text-teal-600">{{ number_format($profile->household_count ?? 0) }}</h3>
+                    <p class="mt-2 text-md font-medium text-gray-500">Kepala Keluarga</p>
+                </div>
+                <div class="text-center bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-4xl font-bold text-teal-600">{{ number_format($profile->population_male ?? 0) }}</h3>
+                    <p class="mt-2 text-md font-medium text-gray-500">Laki-laki</p>
+                </div>
+                <div class="text-center bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-4xl font-bold text-teal-600">{{ number_format($profile->population_female ?? 0) }}</h3>
+                    <p class="mt-2 text-md font-medium text-gray-500">Perempuan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
     <section id="fasilitas" class="py-16">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -68,11 +92,9 @@
         </div>
     </section>
 
-    <!-- Pengumuman & Agenda -->
     <section id="pengumuman" class="py-16 bg-teal-50">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16">
-                <!-- Pengumuman Terbaru -->
                 <div>
                     <h2 class="text-3xl font-bold text-teal-700 mb-8">Pengumuman Terbaru</h2>
                     <div class="space-y-6">
@@ -90,7 +112,6 @@
                     </div>
                 </div>
 
-                <!-- Agenda Kegiatan -->
                 <div id="agenda">
                     <h2 class="text-3xl font-bold text-teal-700 mb-8">Agenda Kegiatan</h2>
                     <div class="space-y-4">

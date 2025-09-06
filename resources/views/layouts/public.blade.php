@@ -14,15 +14,17 @@
 
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-xl font-bold text-teal-600">Kelurahan Kolakaasi</a>
+            <a href="{{ route('home') }}" class="text-xl font-bold text-teal-600">Kelurahan Kolakaasi</a>
             <div class="hidden md:flex space-x-6">
-                <a href="/profil" class="hover:text-teal-600">Profil</a>
-                <a href="/perangkat" class="hover:text-teal-600">Perangkat</a>
-                <a href="/fasilitas" class="hover:text-teal-600">Fasilitas</a>
-                <a href="/pengumuman" class="hover:text-teal-600">Pengumuman</a>
-                <a href="/agenda" class="hover:text-teal-600">Agenda</a>
-                <a href="/galeri" class="hover:text-teal-600">Galeri</a>
-                <a href="/kontak" class="hover:text-teal-600">Kontak</a>
+                <a href="{{ route('profile.page') }}" class="hover:text-teal-600">Profil</a>
+                <a href="{{ route('perangkat.page') }}" class="hover:text-teal-600">Perangkat</a>
+                <a href="{{ route('fasilitas.page') }}" class="hover:text-teal-600">Fasilitas</a>
+                <a href="{{ route('pengumuman.page') }}" class="hover:text-teal-600">Pengumuman</a>
+                <a href="{{ route('agenda.page') }}" class="hover:text-teal-600">Agenda</a>
+                <a href="{{ route('galeri.page') }}" class="hover:text-teal-600">Galeri</a>
+                <a href="{{ route('kontak.page') }}" class="hover:text-teal-600">Kontak</a>
+                <!-- [KODE BARU] Link untuk halaman layanan -->
+                <a href="{{ route('layanan.page') }}" class="hover:text-teal-600">Layanan</a>
             </div>
             <a href="{{ route('login') }}" class="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700">Login Admin</a>
         </nav>
@@ -38,8 +40,6 @@
             <p class="text-sm text-gray-400 mt-2">Dibuat dengan Laravel & Tailwind CSS</p>
         </div>
     </footer>
-
-    {{-- Tidak ada lagi link atau script Fancybox di sini --}}
 
     </body>
 </html>

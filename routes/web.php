@@ -9,6 +9,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController; // <-- TAMBAHKAN INI
 
 // Import semua controller admin
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementContro
 use App\Http\Controllers\Admin\AgendaController as AdminAgendaController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,7 @@ Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.page');
 Route::get('/galeri', [GalleryController::class, 'index'])->name('galeri.page');
 Route::get('/galeri/foto/{photo}', [GalleryController::class, 'show'])->name('galeri.show');
 Route::get('/kontak', [ContactController::class, 'index'])->name('kontak.page');
+Route::get('/layanan', [ServiceController::class, 'index'])->name('layanan.page'); // <-- TAMBAHKAN INI
 
 /*
 |--------------------------------------------------------------------------
@@ -52,29 +55,29 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile-user', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// === [KODE BARU] Rute redirect untuk /admin agar tidak 404 ===
+// === Rute redirect untuk /admin agar tidak 404 ===
 Route::get('/admin', function () {
     return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.index');
-// ==========================================================
 
 // === [GRUP ADMIN] Semua rute admin dikelompokkan di sini ===
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     
     // Rute Dasbor Admin
     Route::get('/dashboard', function () {
-        return view('admin.dashboard'); // Arahkan ke view dasbor admin
+        return view('admin.dashboard');
     })->name('dashboard');
 
     // Rute untuk mengelola profil kelurahan
     Route::get('/kelola-profil', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/kelola-profil', [AdminProfileController::class, 'update'])->name('profile.update');
 
-    // Rute untuk mengelola Perangkat, Fasilitas, Pengumuman, Agenda
+    // Rute Resource lainnya
     Route::resource('/perangkat', AdminPerangkatController::class)->names('perangkat');
     Route::resource('/fasilitas', AdminFacilityController::class)->names('fasilitas');
     Route::resource('/pengumuman', AdminAnnouncementController::class)->names('pengumuman');
     Route::resource('/agenda', AdminAgendaController::class)->names('agenda');
+    Route::resource('/layanan', AdminServiceController::class)->names('layanan');
 
     // Rute untuk mengelola Galeri
     Route::get('/galeri', [AdminGalleryController::class, 'index'])->name('galeri.index');
@@ -85,6 +88,5 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::get('/kontak', [AdminContactController::class, 'edit'])->name('kontak.edit');
     Route::patch('/kontak', [AdminContactController::class, 'update'])->name('kontak.update');
 });
-
 
 require __DIR__.'/auth.php';

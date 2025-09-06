@@ -9,12 +9,12 @@ class FacilityController extends Controller
 {
     public function index()
     {
-        // Ambil semua data fasilitas dari database
-        $allFacilities = Facility::orderBy('type')->get();
+        // Ambil semua fasilitas, lalu kelompokkan berdasarkan kolom 'type'
+        $facilitiesByType = Facility::all()->groupBy('type');
 
-        // Kirim data ke view 'fasilitas'
+        // Kirim data yang sudah dikelompokkan ke view
         return view('fasilitas', [
-            'allFacilities' => $allFacilities
+            'facilitiesByType' => $facilitiesByType
         ]);
     }
 }
