@@ -2,34 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gallery;
+use App\Models\Album;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
+    /**
+     * Menampilkan halaman utama galeri yang berisi daftar album.
+     */
     public function index()
     {
-        // Ambil semua data foto, urutkan dari yang terbaru
-        $allPhotos = Gallery::latest()->paginate(12);
-
-        // Kirim data ke view 'galeri'
-        return view('galeri', [
-            'allPhotos' => $allPhotos
-        ]);
+        // Ambil semua album, beserta foto pertamanya sebagai thumbnail
+        $albums = Album::with('photos')->latest()->get();
+        return view('galeri', compact('albums'));
     }
 
-    // === [TAMBAHKAN METHOD BARU INI] ===
     /**
-     * Menampilkan satu foto dalam halaman detail.
+     * Menampilkan halaman detail yang berisi semua foto dari satu album.
      */
-    public function show(Gallery $photo)
+    public function show(Album $album)
     {
-        // Laravel akan secara otomatis menemukan data Gallery berdasarkan {photo} di URL.
-        // Ini disebut "Route Model Binding".
-
-        // Kirim data foto yang ditemukan ke view 'galeri-show'
-        return view('galeri-show', [
-            'photo' => $photo
-        ]);
+        // Load relasi foto untuk album yang dipilih
+        $album->load('photos');
+        return view('galeri-show', compact('album'));
     }
 }

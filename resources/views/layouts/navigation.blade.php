@@ -29,8 +29,8 @@
                         <x-nav-link :href="route('admin.agenda.index')" :active="request()->routeIs('admin.agenda.*')">
                             {{ __('Kelola Agenda') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('admin.galeri.index')" :active="request()->routeIs('admin.galeri.*')">
-                            {{ __('Kelola Galeri') }}
+                        <x-nav-link :href="route('admin.album.index')" :active="request()->routeIs('admin.album.*')">
+                            {{ __('Kelola Album') }}
                         </x-nav-link>
                         <x-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
                             {{ __('Kelola Kontak') }}
@@ -107,8 +107,8 @@
                 <x-responsive-nav-link :href="route('admin.agenda.index')" :active="request()->routeIs('admin.agenda.*')">
                     {{ __('Kelola Agenda') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.galeri.index')" :active="request()->routeIs('admin.galeri.*')">
-                    {{ __('Kelola Galeri') }}
+                <x-responsive-nav-link :href="route('admin.album.index')" :active="request()->routeIs('admin.album.*')">
+                    {{ __('Kelola Album') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
                     {{ __('Kelola Kontak') }}

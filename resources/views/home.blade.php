@@ -10,7 +10,7 @@
             
             <!-- Pesan Selamat Datang -->
             <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Selamat Datang di Kelurahan Kolakaasi</h1>
-            <p class="text-lg md:text-xl drop-shadow-md mb-12">Maju, Mandiri, dan Berbudaya</p>
+            <p class="text-lg md:text-xl drop-shadow-md mb-12"></p>
 
             <!-- Tautan Cepat -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
