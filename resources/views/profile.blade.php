@@ -3,9 +3,9 @@
 @section('title', 'Profil Lengkap - Kelurahan Kolakaasi')
 
 @section('content')
-<div class="bg-white py-16 sm:py-24">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
+<div class="bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 sm:py-24">
+        
         <div class="mx-auto max-w-3xl text-center">
             <h2 class="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">Profil Kelurahan Kolakaasi</h2>
             <p class="mt-4 text-lg leading-8 text-gray-600">Mengenal lebih dalam tentang sejarah, visi, misi, dan data wilayah Kelurahan Kolakaasi.</p>
@@ -13,7 +13,6 @@
 
         @if($profile)
         <div class="mx-auto mt-16 space-y-20">
-            
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
                 <article>
                     <h3 class="text-2xl font-bold tracking-tight text-gray-800 border-l-4 border-teal-500 pl-4">
@@ -46,63 +45,67 @@
                     </div>
                 </article>
             </div>
-            
-            <div class="bg-gray-50 p-8 sm:p-12 rounded-2xl shadow-inner">
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-16">
-                    
-                    <div>
-                        <h3 class="text-2xl font-bold tracking-tight text-gray-800 text-center mb-8">Data Kependudukan</h3>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="text-center bg-white p-4 rounded-lg shadow">
-                                <p class="text-3xl font-bold text-gray-800">{{ number_format($profile->population_total ?? 0) }}</p>
-                                <p class="mt-1 text-sm font-medium text-gray-500">Total Penduduk</p>
-                            </div>
-                            <div class="text-center bg-white p-4 rounded-lg shadow">
-                                <p class="text-3xl font-bold text-gray-800">{{ number_format($profile->household_count ?? 0) }}</p>
-                                <p class="mt-1 text-sm font-medium text-gray-500">Kepala Keluarga</p>
-                            </div>
-                            <div class="text-center bg-white p-4 rounded-lg shadow">
-                                <p class="text-3xl font-bold text-gray-800">{{ number_format($profile->population_male ?? 0) }}</p>
-                                <p class="mt-1 text-sm font-medium text-gray-500">Laki-laki</p>
-                            </div>
-                            <div class="text-center bg-white p-4 rounded-lg shadow">
-                                <p class="text-3xl font-bold text-gray-800">{{ number_format($profile->population_female ?? 0) }}</p>
-                                <p class="mt-1 text-sm font-medium text-gray-500">Perempuan</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                         <h3 class="text-2xl font-bold tracking-tight text-gray-800 text-center mb-8">Batas Wilayah</h3>
-                         <div class="bg-white p-6 rounded-lg shadow">
-                            <dl class="space-y-4 text-base">
-                                <div class="flex justify-between border-b pb-2">
-                                    <dt class="font-semibold text-gray-700">Utara:</dt>
-                                    <dd class="text-gray-600 text-right">{{ $profile->north_boundary }}</dd>
-                                </div>
-                                <div class="flex justify-between border-b pb-2">
-                                    <dt class="font-semibold text-gray-700">Timur:</dt>
-                                    <dd class="text-gray-600 text-right">{{ $profile->east_boundary }}</dd>
-                                </div>
-                                <div class="flex justify-between border-b pb-2">
-                                    <dt class="font-semibold text-gray-700">Selatan:</dt>
-                                    <dd class="text-gray-600 text-right">{{ $profile->south_boundary }}</dd>
-                                </div>
-                                <div class="flex justify-between">
-                                    <dt class="font-semibold text-gray-700">Barat:</dt>
-                                    <dd class="text-gray-600 text-right">{{ $profile->west_boundary }}</dd>
-                                </div>
-                            </dl>
-                         </div>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
         @else
-        <p class="text-center text-gray-500 mt-16">Data profil tidak ditemukan.</p>
+        <p class="text-center text-gray-500 mt-16">Data profil belum diisi.</p>
         @endif
     </div>
 </div>
+
+@if($profile)
+<div class="bg-gray-50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl lg:max-w-none">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Wilayah & Demografi</h2>
+                <p class="mt-4 text-lg leading-8 text-gray-600">
+                    Potret data wilayah dan kependudukan Kelurahan Kolakaasi.
+                </p>
+            </div>
+            
+            <dl class="mt-16 grid grid-cols-1 gap-x-8 gap-y-10 text-center sm:grid-cols-2 lg:grid-cols-4">
+                <div class="flex flex-col rounded-lg bg-white p-6 shadow-md">
+                    <dt class="text-base leading-7 text-gray-600">Luas Wilayah</dt>
+                    <dd class="order-first text-5xl font-semibold tracking-tight text-teal-600">{{ $profile->luas_wilayah ?? 'N/A' }}</dd>
+                </div>
+                <div class="flex flex-col rounded-lg bg-white p-6 shadow-md">
+                    <dt class="text-base leading-7 text-gray-600">Total Penduduk</dt>
+                    <dd class="order-first text-5xl font-semibold tracking-tight text-teal-600">{{ number_format($profile->population_total ?? 0) }}</dd>
+                </div>
+                 <div class="flex flex-col rounded-lg bg-white p-6 shadow-md">
+                    <dt class="text-base leading-7 text-gray-600">Jumlah RT</dt>
+                    <dd class="order-first text-5xl font-semibold tracking-tight text-teal-600">{{ $profile->jumlah_rt ?? '0' }}</dd>
+                </div>
+                <div class="flex flex-col rounded-lg bg-white p-6 shadow-md">
+                    <dt class="text-base leading-7 text-gray-600">Jumlah RW</dt>
+                    <dd class="order-first text-5xl font-semibold tracking-tight text-teal-600">{{ $profile->jumlah_rw ?? '0' }}</dd>
+                </div>
+            </dl>
+
+            <hr class="my-16 border-gray-200">
+
+            <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+                <div class="rounded-lg bg-white p-6 shadow-md">
+                    <h3 class="text-xl font-bold text-center text-gray-800">Komposisi Penduduk Berdasarkan Usia</h3>
+                    <div class="mt-6">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+                <div class="rounded-lg bg-white p-6 shadow-md">
+                     <h3 class="text-xl font-bold text-center text-gray-800">Komposisi Penduduk Berdasarkan Mata Pencaharian</h3>
+                    <div class="mt-6">
+                        <canvas id="occupationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+@push('scripts')
+<script>
+    window.profileData = {{ Js::from($profile) }};
+</script>
+@endpush
 @endsection

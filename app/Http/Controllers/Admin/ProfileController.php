@@ -9,37 +9,55 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     /**
-     * Menampilkan halaman formulir untuk mengedit profil kelurahan.
+     * Menampilkan form edit profil.
      */
     public function edit()
     {
-        $profile = Profile::first(); // Ambil data profil yang ada
+        // Mengambil data profil pertama, atau membuat yang baru jika belum ada
+        $profile = Profile::firstOrCreate([]);
         return view('admin.profile-edit', compact('profile'));
     }
 
     /**
-     * Menyimpan perubahan data profil ke database.
+     * Memperbarui data profil di database.
      */
     public function update(Request $request)
     {
-        // Validasi data yang masuk
-        $request->validate([
+        // Mengambil data profil pertama yang ada
+        $profile = Profile::first();
+
+        // Validasi semua input dari form, termasuk yang baru
+        $validated = $request->validate([
+            'history' => 'required|string',
             'vision' => 'required|string',
             'mission' => 'required|string',
-            'history' => 'required|string',
-            'north_boundary' => 'required|string',
-            'east_boundary' => 'required|string',
-            'south_boundary' => 'required|string',
-            'west_boundary' => 'required|string',
+            'north_boundary' => 'required|string|max:255',
+            'east_boundary' => 'required|string|max:255',
+            'south_boundary' => 'required|string|max:255',
+            'west_boundary' => 'required|string|max:255',
+            'population_total' => 'required|integer',
+            'household_count' => 'required|integer',
+            'population_male' => 'required|integer',
+            'population_female' => 'required|integer',
+            
+            // Validasi untuk data baru
+            'luas_wilayah' => 'nullable|string|max:255',
+            'jumlah_rt' => 'nullable|integer',
+            'jumlah_rw' => 'nullable|integer',
+            'penduduk_anak' => 'nullable|integer',
+            'penduduk_remaja' => 'nullable|integer',
+            'penduduk_dewasa' => 'nullable|integer',
+            'penduduk_lansia' => 'nullable|integer',
+            'pencaharian_pns' => 'nullable|integer',
+            'pencaharian_wiraswasta' => 'nullable|integer',
+            'pencaharian_petani' => 'nullable|integer',
+            'pencaharian_lainnya' => 'nullable|integer',
         ]);
 
-        // Cari data profil yang ada, atau buat baru jika belum ada
-        $profile = Profile::firstOrCreate([]);
+        // Update data profil dengan data yang sudah divalidasi
+        $profile->update($validated);
 
-        // Update data di database
-        $profile->update($request->all());
-
-        // Kembali ke halaman edit dengan pesan sukses
-        return redirect()->route('admin.profile.edit')->with('success', 'Profil kelurahan berhasil diperbarui!');
+        // Redirect kembali ke halaman edit dengan pesan sukses
+        return redirect()->route('admin.profile.edit')->with('success', 'Profil berhasil diperbarui.');
     }
 }

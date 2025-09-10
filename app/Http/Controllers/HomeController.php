@@ -30,7 +30,8 @@ class HomeController extends Controller
             'Carbon' => Carbon::class,
         ]);
     }
-        public function profilePage()
+
+    public function profilePage()
     {
         // Ambil data profil dari database
         $profile = Profile::first();
