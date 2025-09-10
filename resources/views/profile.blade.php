@@ -82,6 +82,24 @@
                 </div>
             </dl>
 
+            <div class="mt-12">
+                <h4 class="text-center text-lg font-semibold text-gray-700">Rincian Data Kependudukan</h4>
+                <dl class="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 text-center sm:grid-cols-3">
+                    <div class="flex flex-col rounded-lg bg-white p-4 shadow-md">
+                        <dt class="text-base leading-7 text-gray-600">Kepala Keluarga</dt>
+                        <dd class="order-first text-3xl font-semibold tracking-tight text-teal-600">{{ number_format($profile->household_count ?? 0) }}</dd>
+                    </div>
+                    <div class="flex flex-col rounded-lg bg-white p-4 shadow-md">
+                        <dt class="text-base leading-7 text-gray-600">Laki-laki</dt>
+                        <dd class="order-first text-3xl font-semibold tracking-tight text-teal-600">{{ number_format($profile->population_male ?? 0) }}</dd>
+                    </div>
+                    <div class="flex flex-col rounded-lg bg-white p-4 shadow-md">
+                        <dt class="text-base leading-7 text-gray-600">Perempuan</dt>
+                        <dd class="order-first text-3xl font-semibold tracking-tight text-teal-600">{{ number_format($profile->population_female ?? 0) }}</dd>
+                    </div>
+                </dl>
+            </div>
+
             <hr class="my-16 border-gray-200">
 
             <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">

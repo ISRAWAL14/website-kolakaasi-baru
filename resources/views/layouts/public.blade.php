@@ -46,7 +46,7 @@
             <a href="{{ route('pengumuman.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Pengumuman</a>
             <a href="{{ route('agenda.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Agenda</a>
             <a href="{{ route('galeri.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Galeri</a>
-             <a href="{{ route('layanan.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Layanan</a>
+            <a href="{{ route('layanan.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Layanan</a>
             <a href="{{ route('kontak.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Kontak</a>
             <div class="border-t border-gray-200 mt-2 pt-2 px-6">
                 <a href="{{ route('login') }}" class="block w-full text-center bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700">Login Admin</a>
@@ -59,10 +59,23 @@
     </main>
 
     <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-sm text-gray-400">&copy; {{ date('Y') }} KKN REGULER UHO BATCH 2 KELURAHAN KOLAKAASI</p>
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                
+                <img src="{{ asset('images/logo-kkn.jpg') }}" alt="Logo KKN UHO" class="h-12 w-12 rounded-full bg-white/10">
+                
+                <div class="hidden md:block h-12 w-px bg-gray-600"></div>
+    
+                <p class="text-sm text-gray-400 text-center md:text-left">
+                    &copy; {{ date('Y') }} KKN REGULER UHO BATCH 2<br>
+                    KELURAHAN KOLAKAASI
+                </p>
+                
+            </div>
         </div>
     </footer>
+
+    @stack('scripts')
 
 </body>
 </html>
