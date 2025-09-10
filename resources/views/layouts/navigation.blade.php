@@ -32,11 +32,11 @@
                         <x-nav-link :href="route('admin.album.index')" :active="request()->routeIs('admin.album.*')">
                             {{ __('Kelola Album') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
-                            {{ __('Kelola Kontak') }}
-                        </x-nav-link>
                         <x-nav-link :href="route('admin.layanan.index')" :active="request()->routeIs('admin.layanan.*')">
                             {{ __('Kelola Layanan') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
+                            {{ __('Kelola Kontak') }}
                         </x-nav-link>
                     @endif
                     </div>
@@ -60,13 +60,10 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                    onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -110,11 +107,11 @@
                 <x-responsive-nav-link :href="route('admin.album.index')" :active="request()->routeIs('admin.album.*')">
                     {{ __('Kelola Album') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
-                    {{ __('Kelola Kontak') }}
-                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.layanan.index')" :active="request()->routeIs('admin.layanan.*')">
                     {{ __('Kelola Layanan') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.kontak.edit')" :active="request()->routeIs('admin.kontak.*')">
+                    {{ __('Kelola Kontak') }}
                 </x-responsive-nav-link>
             @endif
             </div>
@@ -124,18 +121,14 @@
                 <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
-
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                            onclick="event.preventDefault(); this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>

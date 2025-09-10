@@ -23,8 +23,8 @@
                 <a href="{{ route('pengumuman.page') }}" class="hover:text-teal-600">Pengumuman</a>
                 <a href="{{ route('agenda.page') }}" class="hover:text-teal-600">Agenda</a>
                 <a href="{{ route('galeri.page') }}" class="hover:text-teal-600">Galeri</a>
-                <a href="{{ route('kontak.page') }}" class="hover:text-teal-600">Kontak</a>
                 <a href="{{ route('layanan.page') }}" class="hover:text-teal-600">Layanan</a>
+                <a href="{{ route('kontak.page') }}" class="hover:text-teal-600">Kontak</a>
             </div>
 
             <a href="{{ route('login') }}" class="hidden md:block bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700">Login Admin</a>
@@ -46,8 +46,8 @@
             <a href="{{ route('pengumuman.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Pengumuman</a>
             <a href="{{ route('agenda.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Agenda</a>
             <a href="{{ route('galeri.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Galeri</a>
+             <a href="{{ route('layanan.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Layanan</a>
             <a href="{{ route('kontak.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Kontak</a>
-            <a href="{{ route('layanan.page') }}" class="block px-6 py-2 text-sm hover:bg-gray-100">Layanan</a>
             <div class="border-t border-gray-200 mt-2 pt-2 px-6">
                 <a href="{{ route('login') }}" class="block w-full text-center bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700">Login Admin</a>
             </div>

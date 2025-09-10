@@ -32,10 +32,19 @@
 
                         <div class="mt-4">
                             <x-input-label for="photos" :value="__('Unggah Foto (Bisa pilih lebih dari satu)')" />
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Ukuran maksimal per foto: 5 MB.</p>
                             <input id="photos" name="photos[]" type="file" multiple class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 mt-1" required>
-                            <x-input-error :messages="$errors->get('photos.*')" class="mt-2" />
+                            
+                            @if ($errors->has('photos.*'))
+                                <div class="mt-2">
+                                    @foreach ($errors->get('photos.*') as $messages)
+                                        @foreach ($messages as $message)
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @endforeach
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
-
 
                         <div class="flex items-center justify-end mt-4">
                             <x-primary-button>
@@ -48,4 +57,3 @@
         </div>
     </div>
 </x-app-layout>
-```eof

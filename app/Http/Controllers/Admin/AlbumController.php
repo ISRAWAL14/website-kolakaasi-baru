@@ -37,7 +37,7 @@ class AlbumController extends Controller
             'description' => 'nullable|string',
             'date' => 'required|date',
             'photos' => 'required|array',
-            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:5120' // [DIUBAH] Batas menjadi 5 MB
         ]);
 
         $album = Album::create($request->only('title', 'description', 'date'));
@@ -68,7 +68,7 @@ class AlbumController extends Controller
             'description' => 'nullable|string',
             'date' => 'required|date',
             'photos' => 'nullable|array',
-            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:5120' // [DIUBAH] Batas menjadi 5 MB
         ]);
 
         $album->update($request->only('title', 'description', 'date'));
@@ -96,7 +96,7 @@ class AlbumController extends Controller
     }
     
     /**
-     * [KODE BARU] Menghapus satu foto dari album.
+     * Menghapus satu foto dari album.
      */
     public function destroyPhoto(Photo $photo)
     {
